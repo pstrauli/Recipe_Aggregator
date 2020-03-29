@@ -7,13 +7,15 @@ use App\Recipe;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RecipeTest extends TestCase
 {
-  use DatabaseTransactions;
+  use RefreshDatabase;
 
   public function test_most_rated_recipes_method_returns_200()
   {
+    //$this->withoutExceptionHandling();
     factory(Recipe::class, 5)->create();
     $response = $this->get('/api/recipes');
     $response
@@ -29,12 +31,12 @@ class RecipeTest extends TestCase
       ->assertJsonStructure();
   }
 
-  public function test_most_rated_recipes_method_returns_5_items()
+  public function test_most_rated_recipes_method_returns_number_of_items()
   {
-    factory(Recipe::class, 5)->create();
+    factory(Recipe::class, 100)->create();
     $response = $this->get('/api/recipes');
     $response
       ->assertStatus(200)
-      ->assertJsonCount(5);
+      ->assertJsonCount(10);
   }
 }
