@@ -10,7 +10,7 @@ class RecipeController extends Controller
 {
   public function getMostRated()
   {
-    $recipes = Recipe::orderBy('rating_count')->get();
+    $recipes = Recipe::orderByDesc('rating_count')->take(10)->get();
     return $recipes;
   }
 }
