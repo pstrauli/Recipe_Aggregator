@@ -1,19 +1,20 @@
 import React from 'react';
 
- 
+import Nav from './Nav';
+import Header from './Header';
+import Filter from './Filter';
+import Categories from './Categories';
 
-export default class App extends React.Component {
 
-    render() {
-
-        return (
-
-            <h1>App component</h1>
-
- 
-
-        )
-
-    }
-
+function App() {
+  return (
+    <div>
+      <Nav />
+      <Header />
+      <Filter />
+      <Categories />
+    </div>
+  )
 }
+
+export default App;
