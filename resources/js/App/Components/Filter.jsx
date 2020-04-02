@@ -17,12 +17,12 @@ const Recipe = ({data}) => {
 
 const Filter = () => {
   const [searchBarInput, setSearchBarInput] = useState('')
-  const [wasMostPopularButtonClicked, setWasMostPopularClicked] = useState(false)
-  const [wasBestRatedButtonClicked, setWasBestRatedButtonClicked] = useState(false)
   const [was30MinutesClicked, setWas30MinutesClicked] = useState(false)
   const [was60MinutesClicked, setWas60MinutesClicked] = useState(false)
   const [was120MinutesClicked, setWas120MinutesClicked] = useState(false)
   const [was240MinutesClicked, setWas240MinutesClicked] = useState(false)
+  const [was2ServingsClicked, setWas2ServingsClicked] = useState(false)
+  const [was4PlusServingsClicked, setWas4PlusServingsClicked] = useState(false)
   const [recipes, setRecipes] = useState()
 
   const handleChange = (event) => {
@@ -49,36 +49,79 @@ const Filter = () => {
     // } else if(wasMostPopularButtonClicked && wasBestRatedButtonClicked) {
     // resp = await axios.get(`/api/recipes?query=${searchBarInput}&best=1&popular=1`)
 
-    if(!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked) {
+    if(!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked) {
       resp = await axios.get(`/api/recipes?query=${searchBarInput}`)
       setWas30MinutesClicked(false)
       setWas60MinutesClicked(false)
       setWas120MinutesClicked(false)
       setWas240MinutesClicked(false)
+      setWas2ServingsClicked(false)
+      setWas4ServingsClicked(false)
+      setWas6ServingsClicked(false)
+      setWas8ServingsClicked(false)
 
-    } else if (was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked) {
+
+    } else if (was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked) {
       resp = await axios.get(`/api/recipes?query=${searchBarInput}&time=30`)
       setWas60MinutesClicked(false)
       setWas120MinutesClicked(false)
       setWas240MinutesClicked(false)
+      setWas2ServingsClicked(false)
+      setWas4ServingsClicked(false)
+      setWas6ServingsClicked(false)
+      setWas8ServingsClicked(false)
 
-    } else if (!was30MinutesClicked && was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked) {
+    } else if (!was30MinutesClicked && was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked) {
       resp = await axios.get(`/api/recipes?query=${searchBarInput}&time=60`)
       setWas30MinutesClicked(false)
       setWas120MinutesClicked(false)
       setWas240MinutesClicked(false)
+      setWas2ServingsClicked(false)
+      setWas4ServingsClicked(false)
+      setWas6ServingsClicked(false)
+      setWas8ServingsClicked(false)
 
-    } else if (!was30MinutesClicked && !was60MinutesClicked && was120MinutesClicked && !was240MinutesClicked) {
+    } else if (!was30MinutesClicked && !was60MinutesClicked && was120MinutesClicked && !was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked) {
       resp = await axios.get(`/api/recipes?query=${searchBarInput}&time=120`)
       setWas30MinutesClicked(false)
       setWas60MinutesClicked(false)
       setWas240MinutesClicked(false)
+      setWas2ServingsClicked(false)
+      setWas4ServingsClicked(false)
+      setWas6ServingsClicked(false)
+      setWas8ServingsClicked(false)
     
-    } else if (!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && was240MinutesClicked) {
+    } else if (!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked) {
       resp = await axios.get(`/api/recipes?query=${searchBarInput}&time=240`)
       setWas30MinutesClicked(false)
       setWas60MinutesClicked(false)
       setWas120MinutesClicked(false)
+      setWas2ServingsClicked(false)
+      setWas4ServingsClicked(false)
+      setWas6ServingsClicked(false)
+      setWas8ServingsClicked(false)
+
+    } else if(!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked && was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked) {
+      resp = await axios.get(`/api/recipes?query=${searchBarInput}&servings=2`)
+      setWas30MinutesClicked(false)
+      setWas60MinutesClicked(false)
+      setWas120MinutesClicked(false)
+      setWas240MinutesClicked(false)
+      setWas4ServingsClicked(false)
+      setWas6ServingsClicked(false)
+      setWas8ServingsClicked(false)
+
+    } else if(!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked) {
+      resp = await axios.get(`/api/recipes?query=${searchBarInput}&servings=2`)
+      setWas30MinutesClicked(false)
+      setWas60MinutesClicked(false)
+      setWas120MinutesClicked(false)
+      setWas240MinutesClicked(false)
+      setWas4ServingsClicked(false)
+      setWas6ServingsClicked(false)
+      setWas8ServingsClicked(false)
+
+    
           
     } else {
       return null
@@ -122,6 +165,16 @@ const Filter = () => {
     e.preventDefault()
     setWas240MinutesClicked(true)
   }
+
+  const fetchBy2Servings = async(e) => {
+    e.preventDefault()
+    setWas2ServingsClicked(true)
+  }
+
+  const fetchBy4PlusServings = async(e) => {
+    e.preventDefault()
+    setWas4PlusServingsClicked(true)
+  }
   
   const getData = () => {
     fetch()
@@ -136,7 +189,7 @@ const Filter = () => {
       } value={searchBarInput} className="border border-solid border-gray-400 rounded-full px-2 w-full"type="text" placeholder="eg.chilli..."/>
 
       {/* Rating Section */}
-      <div className="font-body py-2 m-2 mb-2 w-full border-solid border border-gray-300 rounded flex flex-col content-center">
+      {/* <div className="font-body py-2 m-2 mb-2 w-full border-solid border border-gray-300 rounded flex flex-col content-center">
 
         <h3 className="mb-4 text-center">‘Best Rated’ or ‘Most Popular’?</h3>
 
@@ -146,9 +199,9 @@ const Filter = () => {
 
           <button onClick={fetchByPopularity} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-4 text-sm">Most Popular</button>
 
-        </div>
+        </div> */}
 
-      </div>
+      {/* </div> */}
 
       {/* Time section */}
       <div className="mb-8 rounded-sm border-gray-300 border-solid">
@@ -168,6 +221,22 @@ const Filter = () => {
 
           {/* Button 240 */}
           <button onClick={fetchBy240Mins} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-4 text-sm w-12 h-12">2 hrs+</button>
+
+        </div>
+      </div>
+
+      {/* Servings section */}
+      <div className="mb-8 rounded-sm border-gray-300 border-solid">
+        
+        <h3 className="font-body text-center">How many servings?</h3>
+        
+        <div className="flex flex-row overflow-x-auto">
+      
+          {/* Button 2 */}
+          <button onClick={fetchBy2Servings} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12">2</button>
+            
+          {/* Button 4 */}
+          <button onClick={fetchBy4PlusServings} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12">4</button>
 
         </div>
       </div>

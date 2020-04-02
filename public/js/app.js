@@ -31566,33 +31566,33 @@ var Filter = function Filter() {
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState4 = _slicedToArray(_useState3, 2),
-      wasMostPopularButtonClicked = _useState4[0],
-      setWasMostPopularClicked = _useState4[1];
+      was30MinutesClicked = _useState4[0],
+      setWas30MinutesClicked = _useState4[1];
 
   var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      wasBestRatedButtonClicked = _useState6[0],
-      setWasBestRatedButtonClicked = _useState6[1];
+      was60MinutesClicked = _useState6[0],
+      setWas60MinutesClicked = _useState6[1];
 
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState8 = _slicedToArray(_useState7, 2),
-      was30MinutesClicked = _useState8[0],
-      setWas30MinutesClicked = _useState8[1];
+      was120MinutesClicked = _useState8[0],
+      setWas120MinutesClicked = _useState8[1];
 
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState10 = _slicedToArray(_useState9, 2),
-      was60MinutesClicked = _useState10[0],
-      setWas60MinutesClicked = _useState10[1];
+      was240MinutesClicked = _useState10[0],
+      setWas240MinutesClicked = _useState10[1];
 
   var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState12 = _slicedToArray(_useState11, 2),
-      was120MinutesClicked = _useState12[0],
-      setWas120MinutesClicked = _useState12[1];
+      was2ServingsClicked = _useState12[0],
+      setWas2ServingsClicked = _useState12[1];
 
   var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState14 = _slicedToArray(_useState13, 2),
-      was240MinutesClicked = _useState14[0],
-      setWas240MinutesClicked = _useState14[1];
+      was4PlusServingsClicked = _useState14[0],
+      setWas4PlusServingsClicked = _useState14[1];
 
   var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(),
       _useState16 = _slicedToArray(_useState15, 2),
@@ -31613,8 +31613,8 @@ var Filter = function Filter() {
             case 0:
               e.preventDefault();
 
-              if (!(!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked)) {
-                _context.next = 11;
+              if (!(!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked)) {
+                _context.next = 15;
                 break;
               }
 
@@ -31627,86 +31627,148 @@ var Filter = function Filter() {
               setWas60MinutesClicked(false);
               setWas120MinutesClicked(false);
               setWas240MinutesClicked(false);
-              _context.next = 48;
+              setWas2ServingsClicked(false);
+              setWas4ServingsClicked(false);
+              setWas6ServingsClicked(false);
+              setWas8ServingsClicked(false);
+              _context.next = 94;
               break;
 
-            case 11:
-              if (!(was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked)) {
-                _context.next = 20;
+            case 15:
+              if (!(was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked)) {
+                _context.next = 28;
                 break;
               }
 
-              _context.next = 14;
+              _context.next = 18;
               return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/recipes?query=".concat(searchBarInput, "&time=30"));
 
-            case 14:
+            case 18:
               resp = _context.sent;
               setWas60MinutesClicked(false);
               setWas120MinutesClicked(false);
               setWas240MinutesClicked(false);
-              _context.next = 48;
+              setWas2ServingsClicked(false);
+              setWas4ServingsClicked(false);
+              setWas6ServingsClicked(false);
+              setWas8ServingsClicked(false);
+              _context.next = 94;
               break;
 
-            case 20:
-              if (!(!was30MinutesClicked && was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked)) {
-                _context.next = 29;
+            case 28:
+              if (!(!was30MinutesClicked && was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked)) {
+                _context.next = 41;
                 break;
               }
 
-              _context.next = 23;
+              _context.next = 31;
               return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/recipes?query=".concat(searchBarInput, "&time=60"));
 
-            case 23:
+            case 31:
               resp = _context.sent;
               setWas30MinutesClicked(false);
               setWas120MinutesClicked(false);
               setWas240MinutesClicked(false);
-              _context.next = 48;
+              setWas2ServingsClicked(false);
+              setWas4ServingsClicked(false);
+              setWas6ServingsClicked(false);
+              setWas8ServingsClicked(false);
+              _context.next = 94;
               break;
-
-            case 29:
-              if (!(!was30MinutesClicked && !was60MinutesClicked && was120MinutesClicked && !was240MinutesClicked)) {
-                _context.next = 38;
-                break;
-              }
-
-              _context.next = 32;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/recipes?query=".concat(searchBarInput, "&time=120"));
-
-            case 32:
-              resp = _context.sent;
-              setWas30MinutesClicked(false);
-              setWas60MinutesClicked(false);
-              setWas240MinutesClicked(false);
-              _context.next = 48;
-              break;
-
-            case 38:
-              if (!(!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && was240MinutesClicked)) {
-                _context.next = 47;
-                break;
-              }
-
-              _context.next = 41;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/recipes?query=".concat(searchBarInput, "&time=240"));
 
             case 41:
+              if (!(!was30MinutesClicked && !was60MinutesClicked && was120MinutesClicked && !was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked)) {
+                _context.next = 54;
+                break;
+              }
+
+              _context.next = 44;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/recipes?query=".concat(searchBarInput, "&time=120"));
+
+            case 44:
+              resp = _context.sent;
+              setWas30MinutesClicked(false);
+              setWas60MinutesClicked(false);
+              setWas240MinutesClicked(false);
+              setWas2ServingsClicked(false);
+              setWas4ServingsClicked(false);
+              setWas6ServingsClicked(false);
+              setWas8ServingsClicked(false);
+              _context.next = 94;
+              break;
+
+            case 54:
+              if (!(!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked)) {
+                _context.next = 67;
+                break;
+              }
+
+              _context.next = 57;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/recipes?query=".concat(searchBarInput, "&time=240"));
+
+            case 57:
               resp = _context.sent;
               setWas30MinutesClicked(false);
               setWas60MinutesClicked(false);
               setWas120MinutesClicked(false);
-              _context.next = 48;
+              setWas2ServingsClicked(false);
+              setWas4ServingsClicked(false);
+              setWas6ServingsClicked(false);
+              setWas8ServingsClicked(false);
+              _context.next = 94;
               break;
 
-            case 47:
+            case 67:
+              if (!(!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked && was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked)) {
+                _context.next = 80;
+                break;
+              }
+
+              _context.next = 70;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/recipes?query=".concat(searchBarInput, "&servings=2"));
+
+            case 70:
+              resp = _context.sent;
+              setWas30MinutesClicked(false);
+              setWas60MinutesClicked(false);
+              setWas120MinutesClicked(false);
+              setWas240MinutesClicked(false);
+              setWas4ServingsClicked(false);
+              setWas6ServingsClicked(false);
+              setWas8ServingsClicked(false);
+              _context.next = 94;
+              break;
+
+            case 80:
+              if (!(!was30MinutesClicked && !was60MinutesClicked && !was120MinutesClicked && !was240MinutesClicked && !was2ServingsClicked && !was4ServingsClicked && !was6ServingsClicked && !was8ServingsClicked)) {
+                _context.next = 93;
+                break;
+              }
+
+              _context.next = 83;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/recipes?query=".concat(searchBarInput, "&servings=2"));
+
+            case 83:
+              resp = _context.sent;
+              setWas30MinutesClicked(false);
+              setWas60MinutesClicked(false);
+              setWas120MinutesClicked(false);
+              setWas240MinutesClicked(false);
+              setWas4ServingsClicked(false);
+              setWas6ServingsClicked(false);
+              setWas8ServingsClicked(false);
+              _context.next = 94;
+              break;
+
+            case 93:
               return _context.abrupt("return", null);
 
-            case 48:
+            case 94:
               // const resp = await axios.get(`/api/recipes?query=beef&time=60&servings=4&best=1&popular=1`)
               console.log('response from the api', resp);
               setRecipes(resp.data);
 
-            case 50:
+            case 96:
             case "end":
               return _context.stop();
           }
@@ -31853,6 +31915,50 @@ var Filter = function Filter() {
     };
   }();
 
+  var fetchBy2Servings = /*#__PURE__*/function () {
+    var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(e) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              e.preventDefault();
+              setWas2ServingsClicked(true);
+
+            case 2:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      }, _callee8);
+    }));
+
+    return function fetchBy2Servings(_x8) {
+      return _ref9.apply(this, arguments);
+    };
+  }();
+
+  var fetchBy4PlusServings = /*#__PURE__*/function () {
+    var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(e) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+        while (1) {
+          switch (_context9.prev = _context9.next) {
+            case 0:
+              e.preventDefault();
+              setWas4PlusServingsClicked(true);
+
+            case 2:
+            case "end":
+              return _context9.stop();
+          }
+        }
+      }, _callee9);
+    }));
+
+    return function fetchBy4PlusServings(_x9) {
+      return _ref10.apply(this, arguments);
+    };
+  }();
+
   var getData = function getData() {
     fetch();
   };
@@ -31867,18 +31973,6 @@ var Filter = function Filter() {
     type: "text",
     placeholder: "eg.chilli..."
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "font-body py-2 m-2 mb-2 w-full border-solid border border-gray-300 rounded flex flex-col content-center"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
-    className: "mb-4 text-center"
-  }, "\u2018Best Rated\u2019 or \u2018Most Popular\u2019?"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "flex flex-row justify-center"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-    onClick: fetchByRating,
-    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-4 text-sm"
-  }, "Best Rated"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-    onClick: fetchByPopularity,
-    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-4 text-sm"
-  }, "Most Popular"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "mb-8 rounded-sm border-gray-300 border-solid"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
     className: "font-body text-center"
@@ -31896,7 +31990,19 @@ var Filter = function Filter() {
   }, "1 hr+"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     onClick: fetchBy240Mins,
     className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-4 text-sm w-12 h-12"
-  }, "2 hrs+"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+  }, "2 hrs+"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "mb-8 rounded-sm border-gray-300 border-solid"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
+    className: "font-body text-center"
+  }, "How many servings?"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "flex flex-row overflow-x-auto"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+    onClick: fetchBy2Servings,
+    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12"
+  }, "2"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+    onClick: fetchBy4PlusServings,
+    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12"
+  }, "4"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     onClick: handleClick,
     className: "font-body text-white font-bold bg-gray-800 hover:bg-black hover:text-gray-300 rounded-full py-3 px-6 mb-4"
   }, "Let's get cooking!")), recipes && recipes.length > 0 && recipes.map(function (x, i) {
