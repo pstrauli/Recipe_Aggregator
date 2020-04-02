@@ -1,4 +1,9 @@
+const mix = require('laravel-mix');
 require('dotenv').config();
+//require('mix-tailwindcss');
+const tailwindcss = require('tailwindcss')
+
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,6 +16,7 @@ require('dotenv').config();
  */
 
 mix.options({
+
    processCssUrls: false,
    postCss: [ tailwindcss('tailwind.config.js') ],
 });

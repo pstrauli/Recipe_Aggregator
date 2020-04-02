@@ -8,7 +8,7 @@ import Categories from './Categories';
 
 function App() {
   return (
-    <div>
+    <div className="p-4">
       <Nav />
       <Header />
       <Filter />

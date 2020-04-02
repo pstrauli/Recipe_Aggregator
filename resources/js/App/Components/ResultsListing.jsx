@@ -1,4 +1,5 @@
 import React from 'react';
+import ResultSummary from './ResultSummary'
 import RecipePreview from './RecipePreview'
 // import the data one way or other
 
@@ -7,6 +8,7 @@ const ResultsListing = () => {
 
   return (
     <div>
+      <ResultSummary />
       {recipePreviewComponent}
     </div>
   )

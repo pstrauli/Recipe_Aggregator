@@ -3,7 +3,7 @@ import React from 'react';
 const Nav = () => {
   return (
     <div>
-      <h1>Recipe Aggregator Logo</h1>
+      <h1 className="font-display text-red-600 text-3xl mb-2">Recipeazy</h1>
     </div>
   )
 }
