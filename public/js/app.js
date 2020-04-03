@@ -31970,10 +31970,12 @@ var RecipePreview = function RecipePreview(_ref) {
     className: "w-full h-40 block relative"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "font-body font-bold px-2 pt-4 mb-3"
-  }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "overflow-hidden h-10"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "font-body text-sm px-2 mb-3"
-  }, description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "font-body text-xs px-2 mb-3"
+  }, description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "font-body text-xs px-2 mb-3 absolute bottom-0 left-0"
   }, "(Click on preview for full recipe)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "font-body text-sm text-gray-500 px-2 text-right absolute right-0 bottom-0 my-2"
   }, total_time, "mins"))));
