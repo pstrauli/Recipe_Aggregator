@@ -64,29 +64,11 @@ const Filter = () => {
     }
   }
 
-  // const handleClick = async(e) => {
-  //   e.preventDefault()
-  //   let resp 
-  //   console.log ('Submit!!!')
-
-  //   if (time <= 0 && servings <= 0) {
-  //     resp = await axios.get(`/api/recipes?query=${searchBarInput}`)
-  //   } else if (time > 0 && servings <= 0) {
-  //     resp = await axios.get(`/api/recipes?query=${searchBarInput}&time=${time}`)
-  //   } else if (time <= 0 && servings > 0) {
-  //     resp = await axios.get(`/api/recipes?query=${searchBarInput}&servings=${servings}`)
-  //   } else {
-  //     return null
-  //   }
-
-  //   console.log('response from the api', resp)
-  //   setRecipes(resp.data)
-  // }
 
   const handleClick = async(e) => {
     e.preventDefault()
     console.log('new handleclick function testing')
-    const resp = await axios.get(`/api/recipes?query=${searchBarInput}${recipeTime ? `&time=${recipeTime}` : null}${recipeServing ? `&servings=${recipeServing}` : null}`)
+    const resp = await axios.get(`/api/recipes?query=${searchBarInput}${recipeTime ? `&time=${recipeTime}` : ""}${recipeServing ? `&servings=${recipeServing}` : ""}`)
     //const resp = await axios.get(`/api/recipes?query=${searchBarInput}`)
     setRecipes(resp.data)
      
@@ -95,13 +77,11 @@ const Filter = () => {
 
   // TIME button methods
 
-  const howMuchTime = 0
 
   const fetchBy30Mins = async(e) => {
     e.preventDefault()
     setWas30Mins(true)
     console.log('30 mins clicked')
-    howMuchTime = 30
   }
 
   const fetchBy60Mins = async(e) => {
@@ -152,34 +132,38 @@ const Filter = () => {
     fetch()
   }
 
+  const buttonStyleDefault = "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-xs w-12 h-12"
+
+  const buttonStyleSelected = "font-body text-white border-none inline rounded-full bg-gray-700 px-2 py-1 mx-2 text-xs w-12 h-12 shadow-outline"
+
   return (
     <>
-    <form className="flex flex-col items-center bg-gray-100 shadow rounded-sm pt-6 p-2" onSubmit={getData}>
+    <form className="flex flex-col items-center bg-gray-100 shadow rounded-sm pt-6 p-2 mb-4" onSubmit={getData}>
 
       {/* SEARCH BAR */}
       <input onChange={handleChange
-      } value={searchBarInput} className="border border-solid border-gray-400 rounded-full px-2 w-full"type="text" placeholder="eg.chilli..."/>
+      } value={searchBarInput} className="border border-solid border-gray-400 focus:border-gray-800 rounded-full px-2 w-full mb-8"type="text" placeholder="eg.chilli..."/>
 
       {/* TIME */}
       <div className="mb-8 rounded-sm border-gray-300 border-solid">
         
-        <h3 className="font-body text-center">How long do you want to cook?</h3>
+        <h3 className="font-body text-center mb-3">How long do you want to cook?</h3>
         
-        <div className="flex flex-row overflow-x-auto">
+        <div className="flex flex-row h-11">
       
           {/* Button 30 */}
-          <button onClick={(e) => {e.preventDefault(); setRecipeTime(30)}} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12">30</button>
+          <button onClick={(e) => {e.preventDefault(); setRecipeTime(30); console.log('time set to 30')}} className={recipeTime == 30 ? buttonStyleSelected : buttonStyleDefault }>30</button>
             
           {/* Button 60 */}
-          <button onClick={(e) => {e.preventDefault(); setRecipeTime(60)}} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12">1 hr</button>
+          <button onClick={(e) => {e.preventDefault(); setRecipeTime(60)}} className={recipeTime == 60 ? buttonStyleSelected : buttonStyleDefault }>1 hr</button>
 
           {/* Button 120 */}
-          <button onClick={(e) => {e.preventDefault(); setRecipeTime(120)}} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-4 text-sm w-12 h-12">1 hr+</button>
+          <button onClick={(e) => {e.preventDefault(); setRecipeTime(120)}} className={recipeTime == 120 ? buttonStyleSelected : buttonStyleDefault }>1 hr+</button>
 
           {/* Button 240 */}
-          <button onClick={(e) => {e.preventDefault(); setRecipeTime(240)}} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-4 text-sm w-12 h-12">2 hrs+</button>
+          <button onClick={(e) => {e.preventDefault(); setRecipeTime(240)}} className={recipeTime == 240 ? buttonStyleSelected : buttonStyleDefault }>2 hrs+</button>
 
-          {/* <p>You have chosen{howMuchTime} minutes</p> */}
+          {/* <p>You have chosen{setRecipeTime} minutes</p> */}
 
         </div>
       </div>
@@ -187,28 +171,28 @@ const Filter = () => {
       {/* SERVINGS */}
       <div className="mb-8 rounded-sm border-gray-300 border-solid">
         
-        <h3 className="font-body text-center">How many servings?</h3>
+        <h3 className="font-body text-center mb-3">How many servings?</h3>
         
-        <div className="flex flex-row overflow-x-auto">
+        <div className="flex flex-row h-11">
       
           {/* Button 2 */}
-          <button onClick={(e) => {e.preventDefault(); setRecipeServing(2)}} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12">2</button>
+          <button onClick={(e) => {e.preventDefault(); setRecipeServing(2)}} className={recipeServing == 2 ? buttonStyleSelected : buttonStyleDefault }>2</button>
             
           {/* Button 4 */}
-          <button onClick={(e) => {e.preventDefault(); setRecipeServing(4) }} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12">4</button>
+          <button onClick={(e) => {e.preventDefault(); setRecipeServing(4) }} className={recipeServing == 4 ? buttonStyleSelected : buttonStyleDefault }>4</button>
 
           {/* Button 6 */}
-          <button onClick={(e) => {e.preventDefault(); setRecipeServing(6)}} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12">6</button>
+          <button onClick={(e) => {e.preventDefault(); setRecipeServing(6)}} className={recipeServing == 6 ? buttonStyleSelected : buttonStyleDefault }>6</button>
 
           {/* Button 8 */}
-          <button onClick={(e) => {e.preventDefault(); setRecipeServing(8)}} className="font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12">8</button>
+          <button onClick={(e) => {e.preventDefault(); setRecipeServing(8)}} className={recipeServing == 8 ? buttonStyleSelected : buttonStyleDefault }>8</button>
 
         </div>
 
       </div>
 
       {/* SUBMIT */}
-      <button onClick={handleClick} className="font-body text-white font-bold bg-gray-800 hover:bg-black hover:text-gray-300 rounded-full py-3 px-6 mb-4">Let's get cooking!</button>
+      <button onClick={handleClick} className="font-body text-white font-bold bg-gray-800 hover:bg-black hover:text-gray-300 rounded-full py-3 px-6 mt-2 mb-4">Let's get cooking!</button>
 
     </form>
 

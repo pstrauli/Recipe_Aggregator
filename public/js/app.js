@@ -31477,8 +31477,6 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
-
 
 
 
@@ -31581,23 +31579,7 @@ var Filter = function Filter() {
     } else {
       return 0;
     }
-  }; // const handleClick = async(e) => {
-  //   e.preventDefault()
-  //   let resp 
-  //   console.log ('Submit!!!')
-  //   if (time <= 0 && servings <= 0) {
-  //     resp = await axios.get(`/api/recipes?query=${searchBarInput}`)
-  //   } else if (time > 0 && servings <= 0) {
-  //     resp = await axios.get(`/api/recipes?query=${searchBarInput}&time=${time}`)
-  //   } else if (time <= 0 && servings > 0) {
-  //     resp = await axios.get(`/api/recipes?query=${searchBarInput}&servings=${servings}`)
-  //   } else {
-  //     return null
-  //   }
-  //   console.log('response from the api', resp)
-  //   setRecipes(resp.data)
-  // }
-
+  };
 
   var handleClick = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
@@ -31609,7 +31591,7 @@ var Filter = function Filter() {
               e.preventDefault();
               console.log('new handleclick function testing');
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/recipes?query=".concat(searchBarInput).concat(recipeTime ? "&time=".concat(recipeTime) : null).concat(recipeServing ? "&servings=".concat(recipeServing) : null));
+              return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/recipes?query=".concat(searchBarInput).concat(recipeTime ? "&time=".concat(recipeTime) : "").concat(recipeServing ? "&servings=".concat(recipeServing) : ""));
 
             case 4:
               resp = _context.sent;
@@ -31630,8 +31612,6 @@ var Filter = function Filter() {
   }(); // TIME button methods
 
 
-  var howMuchTime = 0;
-
   var fetchBy30Mins = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(e) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
@@ -31641,9 +31621,8 @@ var Filter = function Filter() {
               e.preventDefault();
               setWas30Mins(true);
               console.log('30 mins clicked');
-              howMuchTime = (_readOnlyError("howMuchTime"), 30);
 
-            case 4:
+            case 3:
             case "end":
               return _context2.stop();
           }
@@ -31822,78 +31801,81 @@ var Filter = function Filter() {
     fetch();
   };
 
+  var buttonStyleDefault = "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-xs w-12 h-12";
+  var buttonStyleSelected = "font-body text-white border-none inline rounded-full bg-gray-700 px-2 py-1 mx-2 text-xs w-12 h-12 shadow-outline";
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-    className: "flex flex-col items-center bg-gray-100 shadow rounded-sm pt-6 p-2",
+    className: "flex flex-col items-center bg-gray-100 shadow rounded-sm pt-6 p-2 mb-4",
     onSubmit: getData
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     onChange: handleChange,
     value: searchBarInput,
-    className: "border border-solid border-gray-400 rounded-full px-2 w-full",
+    className: "border border-solid border-gray-400 focus:border-gray-800 rounded-full px-2 w-full mb-8",
     type: "text",
     placeholder: "eg.chilli..."
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "mb-8 rounded-sm border-gray-300 border-solid"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
-    className: "font-body text-center"
+    className: "font-body text-center mb-3"
   }, "How long do you want to cook?"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "flex flex-row overflow-x-auto"
+    className: "flex flex-row h-11"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     onClick: function onClick(e) {
       e.preventDefault();
       setRecipeTime(30);
+      console.log('time set to 30');
     },
-    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12"
+    className: recipeTime == 30 ? buttonStyleSelected : buttonStyleDefault
   }, "30"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     onClick: function onClick(e) {
       e.preventDefault();
       setRecipeTime(60);
     },
-    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12"
+    className: recipeTime == 60 ? buttonStyleSelected : buttonStyleDefault
   }, "1 hr"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     onClick: function onClick(e) {
       e.preventDefault();
       setRecipeTime(120);
     },
-    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-4 text-sm w-12 h-12"
+    className: recipeTime == 120 ? buttonStyleSelected : buttonStyleDefault
   }, "1 hr+"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     onClick: function onClick(e) {
       e.preventDefault();
       setRecipeTime(240);
     },
-    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-4 text-sm w-12 h-12"
+    className: recipeTime == 240 ? buttonStyleSelected : buttonStyleDefault
   }, "2 hrs+"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "mb-8 rounded-sm border-gray-300 border-solid"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
-    className: "font-body text-center"
+    className: "font-body text-center mb-3"
   }, "How many servings?"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "flex flex-row overflow-x-auto"
+    className: "flex flex-row h-11"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     onClick: function onClick(e) {
       e.preventDefault();
       setRecipeServing(2);
     },
-    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12"
+    className: recipeServing == 2 ? buttonStyleSelected : buttonStyleDefault
   }, "2"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     onClick: function onClick(e) {
       e.preventDefault();
       setRecipeServing(4);
     },
-    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12"
+    className: recipeServing == 4 ? buttonStyleSelected : buttonStyleDefault
   }, "4"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     onClick: function onClick(e) {
       e.preventDefault();
       setRecipeServing(6);
     },
-    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12"
+    className: recipeServing == 6 ? buttonStyleSelected : buttonStyleDefault
   }, "6"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     onClick: function onClick(e) {
       e.preventDefault();
       setRecipeServing(8);
     },
-    className: "font-body text-white border-none inline rounded-full bg-red-600 px-2 py-1 mx-2 text-sm w-12 h-12"
+    className: recipeServing == 8 ? buttonStyleSelected : buttonStyleDefault
   }, "8"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     onClick: handleClick,
-    className: "font-body text-white font-bold bg-gray-800 hover:bg-black hover:text-gray-300 rounded-full py-3 px-6 mb-4"
+    className: "font-body text-white font-bold bg-gray-800 hover:bg-black hover:text-gray-300 rounded-full py-3 px-6 mt-2 mb-4"
   }, "Let's get cooking!")), recipes && recipes.length > 0 && recipes.map(function (x, i) {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_RecipePreview__WEBPACK_IMPORTED_MODULE_3__["default"], {
       image_url: x.image_url,
@@ -31975,23 +31957,25 @@ var RecipePreview = function RecipePreview(_ref) {
       name = _ref.name,
       total_time = _ref.total_time;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-    className: "h-64 mb-8 rounded-sm w-full shadow bg-white flex flex-col"
+    className: "h-64 mb-4 rounded-sm w-full shadow bg-white flex flex-col"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: url,
     target: "_blank"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "w-full h-32 bg-center bg-cover bg-no-repeat rounded-t-sm",
+    className: "w-full h-24 bg-center bg-cover bg-no-repeat rounded-t-sm",
     style: {
       backgroundImage: " url(".concat(image_url, ")")
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "w-full h-32 block"
+    className: "w-full h-40 block relative"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "font-body font-bold px-2 pt-2 mb-2"
+    className: "font-body font-bold px-2 pt-4 mb-3"
   }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "font-body text-sm px-2"
-  }, description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Click on preview for full recipe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "font-body text-sm text-gray-500 px-2 text-right"
+    className: "font-body text-sm px-2 mb-3"
+  }, description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "font-body text-xs px-2 mb-3"
+  }, "(Click on preview for full recipe)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "font-body text-sm text-gray-500 px-2 text-right absolute right-0 bottom-0 my-2"
   }, total_time, "mins"))));
 };
 
